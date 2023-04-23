@@ -6,7 +6,7 @@ from app import Flask, render_template
 valorA        = float
 valorB        = float
 
-def funcao(valorA,valorB):
+def funcao():
     # Lê a planilha e calcula o valor total de cada item
     df = pd.read_excel("planilha.xlsx")
     df["Valor Total"] = df["Preço"] * df["Quantidade"]
@@ -34,6 +34,10 @@ def funcao(valorA,valorB):
     #print(df["Acumulada"])
     classificacao = []
     resultado = []
+    print("Digite o valor de A: ")
+    valorA = float(input())    
+    print("Digite o valor de B: ")
+    valorB = float(input())
     for porcentagem in df["Acumulada"]:
         if float(porcentagem.rstrip('%')) <= valorA:
             resultado.append('A')
@@ -61,7 +65,7 @@ def funcao(valorA,valorB):
 # chamada da função main
 if __name__ == "__main__":
     app = Flask(__name__)
-    valorA = input("Valor de A: ")
-    valorB = input("Valor de B: ")
-    time.sleep(1)
-    funcao(valorA, valorB)
+    #valorA = input("Valor de A: ")
+    #valorB = input("Valor de B: ")
+    #time.sleep(1)
+    funcao()

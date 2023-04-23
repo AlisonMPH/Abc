@@ -1,27 +1,42 @@
-import  abc as a
+import abc_1
+import app
+import time
+import flask
+import os
+import webbrowser
+import threading
 
-def main():
-    while True:
-            print("1 - Opção 1")
-            print("2 - Opção 2")
-            print("3 - Sair")
-            escolha = input("Escolha uma opção: ")
+def gerar_planilha():
+    # Coloque aqui o código para gerar a planilha usando as funções do arquivo abc.py
+    abc_1.funcao()
+    print("Planilha gerada com sucesso!")
 
-            if escolha == "1":
-                # Faça algo para a opção 1
-                print("Opção 1 selecionada")
-                a.funcao()
-            elif escolha == "2":
-                # Faça algo para a opção 2
-                print("Opção 2 selecionada")
-            elif escolha == "3":
-                # Encerra o programa
-                print("Programa encerrado.")
-                break
-            else:
-                # Trata opção inválida
-                print("Opção inválida, tente novamente.\n")
+def mostrar_planilha():
+    # Coloque aqui o código para mostrar a planilha na web usando as funções do arquivo app.py
+    #app.mostrar_planilha()
+    app1 = flask.Flask(__name__)
+    app1.template_folder = 'C:\Projetos\Abc'
+    app.mostrar_planilha()
+    app.mostrar_grafico()
+    print("Planilha mostrada na web com sucesso!")
 
-# chamada da função main
-if __name__ == "__main__":
-    main()
+while True:
+    print("Selecione uma opção:")
+    print("1 - Gerar planilha")
+    print("2 - Mostrar planilha na web")
+    print("3 - Sair")
+    opcao = input("Digite o número da opção desejada: ")
+    
+    if opcao == "1":
+        thread = threading.Thread(target=gerar_planilha)
+        thread.start()
+        thread.join()
+    elif opcao == "2":
+        url = 'http://127.0.0.1:5000/planilha'
+        webbrowser.open(url)
+        app.executar_app()        
+    elif opcao == "3":
+        print("Saindo...")
+        break
+    else:
+        print("Opção inválida!")
