@@ -1,5 +1,5 @@
 # Abc
  Calcular a Curva ABC da Planilha
 
-#Requisitos
+# Requisitos
 A planilha precisa estar no mesmo padrao da "planilha.xlsx"
